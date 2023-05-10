@@ -72,7 +72,7 @@ async function patchStandaloneServer() {
   const index = lines.findIndex((line) => line.endsWith("new NextServer({"));
   const indent = lines[index + 1]?.match(/^\W*/)?.[0]!;
 
-  lines.splice(index + 1, 0, `${indent}httpServer: server,`);
+  lines.splice(index + 1, 0, `${indent}httpServer: server${indent},`);
 
   await fs.writeFile(filePath, lines.join("\n"));
 }
